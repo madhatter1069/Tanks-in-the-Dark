@@ -450,8 +450,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 628f5f5c6c376459a8a1741aafa7036b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numTeams: 0
-  teamSize: 0
+  numTeams: 3
+  teamSize: 3
+  spawnRed:
+  - {fileID: 1456467537}
+  - {fileID: 1088684930}
+  - {fileID: 1065471437}
+  spawnPur:
+  - {fileID: 2108086069}
+  - {fileID: 1436710861}
+  - {fileID: 1160338707}
+  spawnGre:
+  - {fileID: 222617161}
+  - {fileID: 704443338}
+  - {fileID: 1483924173}
 --- !u!4 &1056613371
 Transform:
   m_ObjectHideFlags: 0

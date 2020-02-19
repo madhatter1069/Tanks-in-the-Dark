@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public int numTeams;
     public int teamSize;
-    private GameObject[] spawnRed = new GameObject[3];
-    private GameObject[] spawnPur = new GameObject[3];
-    private GameObject[] spawnGre = new GameObject[3];
+    [SerializeField] private GameObject[] spawnRed = new GameObject[3];
+    [SerializeField] private GameObject[] spawnPur = new GameObject[3];
+    [SerializeField] private GameObject[] spawnGre = new GameObject[3];
     
     // Start is called before the first frame update
     void Start()
