@@ -9,6 +9,11 @@ public class MenuScript : MonoBehaviour
     private GameObject numTanks;
     public int activeTanks;
     public int activeTeams;
+
+    public void QuitGame(){
+        Application.Quit();
+    }
+    
     void Start(){
         activeTeams = activeTanks = 0;
         PlayerPrefs.SetInt("Tanks",activeTanks+1);
