@@ -142,8 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c19150f92db46e2831b24ad9668725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shooter: {fileID: 0}
-  teamColor: 0
+  teamColor: 2
 --- !u!50 &7731106996117233162
 Rigidbody2D:
   serializedVersion: 4

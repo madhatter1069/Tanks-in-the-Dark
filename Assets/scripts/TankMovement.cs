@@ -14,18 +14,22 @@ public class TankMovement : MonoBehaviour
     public string right;
     public string down;
     public team teamColor;
+    [SerializeField]private float time;
+    [SerializeField]private float changeD = 1;
 
     void Start()
     {
         rd = gameObject.GetComponent<Rigidbody2D>();
         firingAim = Vector2.up;
+        time=changeD;
     }
 
     // Update is called once per frame
     void Update()
     {
-        rd.velocity = Vector3.zero; //reset velocity
-
+        time+=Time.deltaTime;
+        if (time>changeD){chooseDir();}
+    /*
         if (Input.GetKey(right)) //Find Button and then adjust accordingly
         {
             transform.eulerAngles = Vector3.forward * -90;
@@ -50,11 +54,53 @@ public class TankMovement : MonoBehaviour
             rd.velocity = Vector2.down * Time.deltaTime * speed;
             firingAim = Vector2.down;
         }
-   }
+   */}
 
     public Vector2 GetFiringAim()
     {
         return firingAim;
     }
+    public void chooseDir(){
+        //rd.velocity = Vector3.zero; //reset velocity
+        int direction = Random.Range(0,3);
+        time = 0;
+        switch (direction){
+            case 0: //Find Button and then adjust accordingly
+            {
+                transform.eulerAngles = Vector3.forward * -90;
+                rd.velocity = Vector2.right * Time.deltaTime * speed;
+                firingAim = Vector2.right; //Change tank facing
+                return;
+            }
+            case 1:
+            {
+                transform.eulerAngles = Vector3.forward * 90;
+                rd.velocity = Vector2.left * Time.deltaTime * speed;
+                firingAim = Vector2.left;
+                return;
+            }
+            case 2:
+            {
+                transform.eulerAngles = Vector3.forward * 0;
+                rd.velocity = Vector2.up * Time.deltaTime * speed;
+                firingAim = Vector2.up;
+                return;
+            }
+            case 3:
+            {
+                transform.eulerAngles = Vector3.forward * 180;
+                rd.velocity = Vector2.down * Time.deltaTime * speed;
+                firingAim = Vector2.down;
+                return;
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D coll){
+        if(coll.CompareTag("Wall"))
+        {
+            rd.velocity = Vector3.zero;
+        }
+    } 
 }
 

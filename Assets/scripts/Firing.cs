@@ -8,8 +8,8 @@ public class Firing : MonoBehaviour
     public float bulletStartDist;
     public float bulletSpeed;
     public string fire;
-    public float timer;
-    private float shootTime = .1f;
+    private float timer;
+    private float shootTime = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +20,8 @@ public class Firing : MonoBehaviour
     void Update()
     {
         timer+=Time.deltaTime;
-        if (Input.GetKeyDown(fire)) //GetKeyDown to limit to one bullet per input
-        {
+        //if (Input.GetKeyDown(fire)) //GetKeyDown to limit to one bullet per input
+        //{
             if (timer>= shootTime){
                 GameObject bullet = Instantiate(x, 
                                             transform.position + bulletStartDist * transform.forward, 
@@ -30,7 +30,7 @@ public class Firing : MonoBehaviour
                 bullet.GetComponent<Rigidbody2D>().velocity = gameObject.GetComponent<TankMovement>().GetFiringAim() * bulletSpeed * Time.deltaTime; //Fire bullet
                 timer = 0;
             }
-        }
+        //}
     }
 
 

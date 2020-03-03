@@ -26,13 +26,11 @@ public class TargetDetection : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if(coll.CompareTag("Enemy")) //For future reference change this to player when making multiplayer
-        {
-            Destroy(gameObject);
-        }
         
         else if (coll.CompareTag("Player") && coll.gameObject.GetComponent<TankMovement>().teamColor != teamColor){
-            coll.gameObject.transform.position = new Vector3(0, 0, 0);
+            //coll.gameObject.transform.position = new Vector3(0, 0, 0);
+            Destroy(gameObject);
+            Destroy(coll.gameObject);
         }
     }
 
