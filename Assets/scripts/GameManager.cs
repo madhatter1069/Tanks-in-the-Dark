@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     {
         if (numTeams == 1){
             finish.SetActive(true);
+            StartCoroutine(QuitGame());
         }
     }
 
@@ -44,5 +47,9 @@ public class GameManager : MonoBehaviour
             spawns[i].GetComponent<TankSpawn>().Spawntank();
         }
 
+    }
+    private IEnumerator QuitGame(){
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 }
