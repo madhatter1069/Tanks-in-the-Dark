@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (numTeams == 0){
+            redWins.SetActive(false);
+            purpWins.SetActive(false);
+            greWins.SetActive(false);
             noWin.SetActive(true);
             StartCoroutine(QuitGame());
         }
