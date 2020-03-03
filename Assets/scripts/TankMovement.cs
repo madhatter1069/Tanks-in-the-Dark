@@ -95,12 +95,6 @@ public class TankMovement : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerEnter2D(Collider2D coll){
-        if(coll.CompareTag("Wall"))
-        {
-            rd.velocity = Vector3.zero;
-        }
-    } 
+ 
 }
 
