@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int numTeams;
-    public int teamSize;
+    private int teamSize;
+    public int SetTeamCount;
+    public int Tanks;
     public int r=0;
     public int p=0;
     public int g=0;
@@ -18,12 +19,24 @@ public class GameManager : MonoBehaviour
     public GameObject purpWins;
     public GameObject greWins;
     public GameObject noWin;
+    public int numTeams;
     
     // Start is called before the first frame update
     void Start()
     {
-        numTeams = PlayerPrefs.GetInt("Teams");
-        teamSize = PlayerPrefs.GetInt("Tanks");
+        if (SetTeamCount==0 || SetTeamCount < 2 || SetTeamCount > 3)
+        {
+            SetTeamCount = PlayerPrefs.GetInt("Teams");
+        }
+        numTeams = SetTeamCount;
+        if (Tanks == 0 || Tanks < 1 || Tanks > 3) 
+        {
+            Tanks = PlayerPrefs.GetInt("Tanks");
+        }
+        teamSize = Tanks;
+
+        if (SetTeamCount!=0 && numTeams != SetTeamCount)
+
         if (numTeams<2){numTeams = 2;}
         else if(numTeams>3){numTeams = 3;}
         if (teamSize<1){teamSize = 1;}
