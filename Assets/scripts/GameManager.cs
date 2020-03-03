@@ -14,11 +14,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject[] spawnRed = new GameObject[3];
     [SerializeField] private GameObject[] spawnPur = new GameObject[3];
     [SerializeField] private GameObject[] spawnGre = new GameObject[3];
-    public GameObject finish;
+    public GameObject redWins;
+    public GameObject purpWins;
+    public GameObject greWins;
+    public GameObject noWin;
     
     // Start is called before the first frame update
     void Start()
     {
+        numTeams = PlayerPrefs.GetInt("Teams");
+        teamSize = PlayerPrefs.GetInt("Tanks");
         if (numTeams<2){numTeams = 2;}
         else if(numTeams>3){numTeams = 3;}
         if (teamSize<1){teamSize = 1;}
@@ -35,8 +40,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (numTeams == 0){
+            noWin.SetActive(true);
+            StartCoroutine(QuitGame());
+        }
         if (numTeams == 1){
-            finish.SetActive(true);
+            if(r != 0){redWins.SetActive(true);}
+            else if(p != 0){purpWins.SetActive(true);}
+            else if(g != 0){greWins.SetActive(true);}
             StartCoroutine(QuitGame());
         }
     }
